@@ -1,0 +1,26 @@
+@import "./reset.scss";
+@import "./variables.scss";
+
+body {
+  background-color: $main;
+}
+
+p,
+span,
+div,
+li {
+  font-family: $font;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: $logoFont;
+  font-size: 5em;
+  text-align: center;
+  font-weight: 800;
+  color: $alt;
+}

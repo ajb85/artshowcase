@@ -1,0 +1,65 @@
+@import "styles/variables.scss";
+
+.imageManager {
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+
+  & > button {
+    margin: 0 0 $lh;
+    width: 50%;
+    max-width: 600px;
+    min-width: 250px;
+
+    &:first-of-type {
+      margin-top: 4 * $lh;
+      margin-bottom: $lh;
+    }
+  }
+}
+
+.cardWrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+
+  margin-top: 2 * $lh;
+
+  & > * {
+    width: 250px;
+    margin: 0 $lh $lh 0;
+
+    img {
+      cursor: pointer;
+      max-width: 200px;
+      margin: $lh auto;
+      max-height: 150px;
+      object-fit: scale-down;
+    }
+
+    .header {
+      position: relative;
+
+      svg {
+        position: absolute;
+        right: $lh;
+        font-size: 1.2em;
+      }
+    }
+
+    .body {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+    }
+
+    .buttonGroup {
+      width: 100%;
+
+      button {
+        font-size: 1.2em;
+      }
+    }
+  }
+}

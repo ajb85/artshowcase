@@ -1,0 +1,108 @@
+@import "styles/variables.scss";
+
+.imageUpload {
+  position: relative;
+  width: fit-content;
+
+  label {
+    display: block;
+    cursor: pointer;
+    position: absolute;
+
+    &.large {
+      width: 200px;
+      height: 200px;
+    }
+  }
+
+  svg {
+    border-radius: 4px;
+
+    &.large {
+      border: 1px solid var(--text);
+      padding: $lh;
+      height: 200px;
+      width: 200px;
+    }
+
+    &.medium {
+      border: 1px solid var(--text);
+      padding: $lh;
+      font-size: 5rem;
+    }
+
+    &.small {
+      border: 1px solid var(--text);
+      padding: $lh / 2;
+      font-size: 2rem;
+    }
+  }
+
+  input {
+    display: none;
+  }
+
+  p {
+    text-align: center;
+    color: var(--error);
+  }
+
+  .imageWrapper {
+    border-radius: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    img {
+      width: 100%;
+      height: auto;
+      max-height: 100%;
+      object-fit: scale-down;
+    }
+
+    &.large {
+      border: 1px solid var(--text);
+      height: 200px;
+      width: 200px;
+    }
+
+    &.medium {
+      border: 1px solid var(--text);
+      height: 100px;
+      width: 100px;
+    }
+
+    &.small {
+      border: 1px solid var(--text);
+      height: 50px;
+      width: 50px;
+    }
+  }
+}
+
+.indicator {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+
+  & > svg {
+    width: 25px;
+    height: auto;
+
+    &.uploading {
+      @include spinner(linear, 1s);
+    }
+  }
+}
+
+.success {
+  color: var(--success);
+}
+
+.error {
+  color: var(--error);
+}
+
+p.error {
+  margin-top: 0;
+}

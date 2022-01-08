@@ -1,0 +1,10 @@
+@import "styles/variables.scss";
+
+.login {
+  max-width: 500px;
+  margin: $lh * 4 auto;
+  background-color: white;
+
+  border-radius: 20px;
+  padding: $lh * 2;
+}
