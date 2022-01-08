@@ -6,6 +6,7 @@
   width: 100%;
   height: 100vh;
   z-index: 0;
+  cursor: pointer;
 }
 
 .content {
@@ -14,6 +15,7 @@
   left: 0;
   right: 0;
   margin: 0 auto;
+  cursor: pointer;
 
   img {
     max-width: 100%;
