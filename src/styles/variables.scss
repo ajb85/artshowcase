@@ -1,13 +1,7 @@
-@import url("https://fonts.googleapis.com/css2?family=Nerko+One&family=Roboto:wght@100&family=The+Nautigal&display=swap");
-
 $font: "Roboto", sans-serif;
 $logoFont: "The Nautigal", cursive;
 
 $lh: 10px;
-
-$main: #404040;
-$alt: #ff00ff;
-$darkAlt: #bf00bf;
 
 @mixin spinner($timingFunction: ease, $duration: 2s) {
   animation-name: spin;

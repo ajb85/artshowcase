@@ -23,7 +23,7 @@ export default function Images(props) {
   const navigate = useNavigate();
   const [images, setImages] = useState([]);
   const [fetched, setFetched] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const [onFinal, setOnFinal] = useState(false);
   const [error, setError] = useState(false);
 

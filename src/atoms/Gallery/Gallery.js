@@ -1,15 +1,17 @@
 import { useEffect, useRef } from "react";
 import { Card, CardBody, CardHeader, CardImg } from "shards-react";
 import { useNavigate } from "react-router-dom";
+import { Hearts } from "react-loading-icons";
 
 import { Logo } from "atoms";
-import { useImages } from "hooks";
+import { useImages, useColors } from "hooks";
 
 import s from "./Gallery.module.scss";
 
 export default function Gallery() {
   const navigate = useNavigate();
   const images = useImages();
+  const colors = useColors();
   const didFetch = useRef(false);
   const lastImage = useRef();
   const obs = useRef();
@@ -38,6 +40,15 @@ export default function Gallery() {
     };
   }, [images]);
 
+  if (colors.isLoading || images.isLoading) {
+    return (
+      <div className={s.loading}>
+        <h1>Fetching...</h1>
+        <Hearts fill={colors.get("loadingIcon")} />
+        <p>Loading images...</p>
+      </div>
+    );
+  }
   return (
     <div className={s.gallery}>
       <header>

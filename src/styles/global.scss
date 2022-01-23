@@ -2,7 +2,7 @@
 @import "./variables.scss";
 
 body {
-  background-color: $main;
+  background-color: var(--background);
 }
 
 p,
@@ -22,5 +22,5 @@ h6 {
   font-size: 5em;
   text-align: center;
   font-weight: 800;
-  color: $alt;
+  color: var(--logo-main);
 }
