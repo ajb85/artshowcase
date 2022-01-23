@@ -17,6 +17,7 @@
 
   svg {
     border-radius: 4px;
+    border: color $transition;
 
     &.large {
       border: 1px solid var(--text);
@@ -43,6 +44,7 @@
   }
 
   p {
+    transition: color $transition;
     text-align: center;
     color: var(--error);
   }
@@ -52,6 +54,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    transition: border $transition;
 
     img {
       width: 100%;
@@ -96,10 +99,12 @@
 }
 
 .success {
+  transition: color $transition;
   color: var(--success);
 }
 
 .error {
+  transition: color $transition;
   color: var(--error);
 }
 

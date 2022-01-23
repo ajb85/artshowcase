@@ -6,6 +6,34 @@
 
   align-items: center;
 
+  .svgs {
+    & > svg {
+      position: fixed;
+      top: 10px;
+      font-size: 3em;
+      transition: color 0.5s;
+      color: var(--logo-main);
+      cursor: pointer;
+      z-index: 100;
+      background-color: white;
+      border-radius: 50%;
+      padding: 5px;
+
+      &:first-of-type {
+        left: 10px;
+      }
+
+      &:last-of-type {
+        right: 10px;
+      }
+
+      @media (max-width: 500px) {
+        top: initial;
+        bottom: 10px;
+      }
+    }
+  }
+
   & > button {
     margin: 0 0 $lh;
     width: 50%;

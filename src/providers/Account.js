@@ -35,7 +35,6 @@ export default function Account(props) {
         const response = await axios.post("/account/login", formData);
         if (response.data) {
           const { token, ...accountInfo } = response.data;
-          console.log("LOGGED IN: ", token);
           setAccount(accountInfo);
           updateToken(token);
           setIsLoading(false);

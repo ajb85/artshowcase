@@ -1,5 +1,26 @@
 @import "styles/variables.scss";
 
+.gallery {
+  & > svg {
+    position: fixed;
+    right: 10px;
+    top: 10px;
+    font-size: 3em;
+    transition: color 0.5s;
+    color: var(--logo-main);
+    cursor: pointer;
+    z-index: 100;
+    background-color: white;
+    border-radius: 50%;
+    padding: 5px;
+
+    @media (max-width: 500px) {
+      top: initial;
+      bottom: 10px;
+    }
+  }
+}
+
 .cardWrapper {
   display: flex;
   flex-wrap: wrap;
@@ -60,12 +81,14 @@
   }
 
   svg {
+    transition: color $transition;
     color: var(--loading-icon);
     margin-bottom: 0.5em;
     margin-top: -10em;
   }
 
   p {
+    transition: color $transition;
     color: var(--loading-text);
   }
 }

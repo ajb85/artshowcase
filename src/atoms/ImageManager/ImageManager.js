@@ -8,9 +8,10 @@ import {
   ButtonGroup,
 } from "shards-react";
 import { BsLink45Deg } from "react-icons/bs";
-import { BiEditAlt } from "react-icons/bi";
-import { MdDeleteForever } from "react-icons/md";
+import { BiEditAlt, BiHomeHeart } from "react-icons/bi";
+import { MdDeleteForever, MdOutlineColorLens } from "react-icons/md";
 import { GrHide } from "react-icons/gr";
+import { useNavigate } from "react-router-dom";
 
 import { Upsert, TooltipButton, EditAccount } from "atoms/";
 import { useImages } from "hooks/";
@@ -19,6 +20,7 @@ import { copyToClipboard } from "js";
 import s from "./ImageManager.module.scss";
 
 export default function ImageManager() {
+  const navigate = useNavigate();
   const images = useImages();
   const [activeImage, setActiveImage] = useState(null);
   const fetchAllImages = images.get.all;
@@ -37,6 +39,10 @@ export default function ImageManager() {
 
   return (
     <section className={s.imageManager}>
+      <div className={s.svgs}>
+        <BiHomeHeart onClick={() => navigate("/")} />
+        <MdOutlineColorLens onClick={() => navigate("/manager/site")} />
+      </div>
       <h2>Manage Uploads</h2>
       <Button onClick={upsertImage.bind(this, true)}>Upload Image</Button>
       <EditAccount />

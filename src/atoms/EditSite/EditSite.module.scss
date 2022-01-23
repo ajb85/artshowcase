@@ -1,0 +1,185 @@
+@import "styles/variables.scss";
+
+$minWidth: 200px;
+$maxWidth: 500px;
+
+.editSite {
+  padding: 0.25em;
+
+  & > svg {
+    position: fixed;
+    left: 10px;
+    top: 10px;
+    font-size: 3em;
+    transition: color 0.5s;
+    color: var(--logo-main);
+    cursor: pointer;
+    z-index: 100;
+    background-color: white;
+    border-radius: 50%;
+    padding: 5px;
+
+    @media (max-width: 500px) {
+      top: initial;
+      bottom: 10px;
+    }
+  }
+
+  h2 {
+    margin-bottom: 0.5em;
+
+    @media (max-width: 400px) {
+      font-size: 3em;
+    }
+  }
+}
+
+.error {
+  background-color: red;
+  color: white;
+  position: fixed;
+  padding: 0.25em;
+  right: 10px;
+  z-index: 100;
+  bottom: 20px;
+}
+
+.save {
+  position: fixed;
+  bottom: 13px;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  width: fit-content;
+  z-index: 200;
+}
+
+.section {
+  &:not(:first-of-type) {
+    margin-top: 3em;
+  }
+
+  &:last-of-type {
+    margin-bottom: 20em;
+  }
+
+  .elements {
+    min-width: $minWidth;
+    max-width: $maxWidth;
+    width: 100%;
+    margin: 1em auto;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 1em;
+
+    p {
+      color: white;
+    }
+  }
+
+  h3 {
+    font-family: $font;
+    color: white;
+    font-size: 3em;
+    font-weight: 800;
+    border-bottom: 1px solid white;
+    max-width: 500px;
+    margin: 0 auto;
+
+    @media (max-width: 400px) {
+      font-size: 2em;
+    }
+  }
+}
+
+.center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0.5em;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+}
+
+.pickerWrapper {
+  min-width: $minWidth;
+  max-width: $maxWidth;
+  width: 100%;
+  position: relative;
+  margin: 0 auto;
+
+  & > div:not(:first-of-type) {
+    position: absolute;
+    z-index: 1;
+    right: 0;
+    top: 0;
+    left: 0;
+    margin: 0 auto;
+    transform: translate(0%, -5%);
+  }
+}
+
+.input {
+  label {
+    color: white;
+    font-size: 1.2em;
+    width: 100%;
+
+    input {
+      margin-top: 0.25em;
+    }
+  }
+}
+
+.slider {
+  label {
+    color: white;
+  }
+}
+
+.colorWrapper {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 1em 0;
+  border: 1px solid white;
+  padding: 0.25em;
+}
+
+.tile {
+  width: 25px;
+  height: 25px;
+  border: 1px solid white;
+  font-size: 1.5em;
+}
+
+.logoMain {
+  background-color: var(--logo-main);
+}
+
+.logoStroke {
+  background-color: var(--logo-stroke);
+}
+
+.logoShadow {
+  background-color: var(--logo-shadow);
+}
+
+.background {
+  background-color: var(--background);
+}
+
+.loadingIcon {
+  background-color: var(--loading-icon);
+}
+
+.loadingIconStroke {
+  background-color: var(--loading-icon-stroke);
+}
+
+.loadingText {
+  background-color: var(--loading-text);
+}

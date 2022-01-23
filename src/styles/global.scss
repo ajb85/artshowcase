@@ -2,6 +2,7 @@
 @import "./variables.scss";
 
 body {
+  transition: background-color $transition;
   background-color: var(--background);
 }
 
@@ -22,5 +23,6 @@ h6 {
   font-size: 5em;
   text-align: center;
   font-weight: 800;
+  transition: color $transition;
   color: var(--logo-main);
 }

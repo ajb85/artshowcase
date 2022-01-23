@@ -1,6 +1,6 @@
 $font: "Roboto", sans-serif;
 $logoFont: "The Nautigal", cursive;
-
+$transition: 0.5s;
 $lh: 10px;
 
 @mixin spinner($timingFunction: ease, $duration: 2s) {

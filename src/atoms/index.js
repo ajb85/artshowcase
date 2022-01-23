@@ -9,3 +9,5 @@ export { default as Gallery } from "./Gallery/";
 export { default as Logo } from "./Logo/";
 export { default as FullPageImage } from "./FullPageImage/";
 export { default as EditAccount } from "./EditAccount/";
+export { default as EditSite } from "./EditSite/";
+export { default as LoadingIcon } from "./LoadingIcon/";

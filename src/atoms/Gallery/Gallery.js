@@ -1,15 +1,16 @@
 import { useEffect, useRef } from "react";
 import { Card, CardBody, CardHeader, CardImg } from "shards-react";
 import { useNavigate } from "react-router-dom";
-import { Hearts } from "react-loading-icons";
+import { MdOutlineManageAccounts } from "react-icons/md";
 
-import { Logo } from "atoms";
-import { useImages, useColors } from "hooks";
+import { Logo, LoadingIcon } from "atoms";
+import { useImages, useColors, useAccount } from "hooks";
 
 import s from "./Gallery.module.scss";
 
 export default function Gallery() {
   const navigate = useNavigate();
+  const tokenIsValidated = useAccount().token.validated;
   const images = useImages();
   const colors = useColors();
   const didFetch = useRef(false);
@@ -41,16 +42,14 @@ export default function Gallery() {
   }, [images]);
 
   if (colors.isLoading || images.isLoading) {
-    return (
-      <div className={s.loading}>
-        <h1>Fetching...</h1>
-        <Hearts fill={colors.get("loadingIcon")} />
-        <p>Loading images...</p>
-      </div>
-    );
+    return <LoadingIcon className={s.loading} />;
   }
+
   return (
     <div className={s.gallery}>
+      {tokenIsValidated && (
+        <MdOutlineManageAccounts onClick={() => navigate("/manager")} />
+      )}
       <header>
         <Logo />
       </header>

@@ -67,8 +67,6 @@ export default function EditAccount() {
       !account.confirmPassword ||
       account.confirmPassword !== account.newPassword);
 
-  console.log("PASSWORDS: ");
-
   return (
     <>
       <Button onClick={toggle}>Edit Account</Button>
@@ -91,7 +89,7 @@ export default function EditAccount() {
               <FormInput
                 id="oldPassword"
                 type="password"
-                placeholder="OldPassword"
+                placeholder="Old Password"
                 value={account.oldPassword}
                 onChange={handleAccountChange}
               />
