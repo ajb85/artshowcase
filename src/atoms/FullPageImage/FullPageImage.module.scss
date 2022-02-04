@@ -7,6 +7,13 @@
   height: 100vh;
   z-index: 0;
   cursor: pointer;
+
+  button {
+    position: fixed;
+    bottom: $lh;
+    right: $lh;
+    cursor: pointer;
+  }
 }
 
 .content {

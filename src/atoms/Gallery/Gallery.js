@@ -7,6 +7,7 @@ import { Logo, LoadingIcon } from "atoms";
 import { useImages, useColors, useAccount } from "hooks";
 
 import s from "./Gallery.module.scss";
+import { combineClasses } from "js";
 
 export default function Gallery() {
   const navigate = useNavigate();
@@ -60,19 +61,58 @@ export default function Gallery() {
               ref={index === images.public.length - 1 ? lastImage : undefined}
               key={i.id}
             >
-              <Card onClick={() => navigate(`/image/${i.id}`)}>
-                <CardHeader className={s.header}>
-                  {i.name || "Unnamed"}
-                </CardHeader>
-                <CardImg src={i.link} />
-                <CardBody className={s.body}>
-                  <p>{i.description || "No description"}</p>
-                </CardBody>
+              <Card
+                className={combineClasses(
+                  s.card,
+                  i.progress?.[0]?.link && s.dual
+                )}
+                onClick={() => navigate(`/image/${i.id}`)}
+              >
+                {i.name && (
+                  <CardHeader className={s.header}>{i.name}</CardHeader>
+                )}
+                <CardImages baseURL={`/image/${i.id}`} image={i} />
+                {i.description && (
+                  <CardBody className={s.body}>
+                    <p>{i.description}</p>
+                  </CardBody>
+                )}
               </Card>
             </div>
           ))}
         </div>
       </main>
+    </div>
+  );
+}
+
+function CardImages({ image, baseURL }) {
+  const navigate = useNavigate();
+  return process.env.REACT_APP_GALLERY_FINAL_FIRST ? (
+    <div className={s.images}>
+      <CardImg src={image.link} />
+      {image.progress?.[0]?.link && (
+        <CardImg
+          onClick={(e) => {
+            e.stopPropagation();
+            navigate(`${baseURL}/0`);
+          }}
+          src={image.progress[0].link}
+        />
+      )}
+    </div>
+  ) : (
+    <div className={s.images}>
+      {image.progress?.[0]?.link && (
+        <CardImg
+          onClick={(e) => {
+            e.stopPropagation();
+            navigate(`${baseURL}/0`);
+          }}
+          src={image.progress[0].link}
+        />
+      )}
+      <CardImg src={image.link} />
     </div>
   );
 }

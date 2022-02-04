@@ -12,12 +12,21 @@ import styles from "./ImageUpload.module.scss";
 
 export default function ImageUpload(props) {
   const { upload } = useImages();
-  const { setLink } = props;
+  const { setLink, setIsLoading } = props;
   const [isUploading, setIsUploading] = useState(false);
   const [uploadError, setUploadError] = useState(false);
   const [file, setFile] = useState(null);
   const [render, setRender] = useState(props.value || null);
   const dropzone = useRef();
+  const lastImage = useRef(props.value);
+
+  const setLoading = useCallback(
+    (value) => {
+      setIsUploading(value);
+      setIsLoading && setIsLoading(value);
+    },
+    [setIsLoading]
+  );
 
   const startDragging = useCallback(
     (e) => {
@@ -47,17 +56,16 @@ export default function ImageUpload(props) {
       setFile(file);
 
       try {
-        setIsUploading(true);
+        setLoading(true);
         const { data } = await upload(file);
-
-        setIsUploading(false);
+        setLoading(false);
         setLink(data.link);
       } catch (err) {
-        setIsUploading(false);
+        setLoading(false);
         setUploadError(true);
       }
     },
-    [setRender, setLink, upload]
+    [setRender, setLink, upload, setLoading]
   );
 
   const handleDrop = useCallback(
@@ -96,26 +104,41 @@ export default function ImageUpload(props) {
     if (props.value && !render) {
       setRender(props.value);
       setFile(null);
-      setIsUploading(false);
+      setLoading(false);
       setUploadError(false);
+
       setLink("");
     }
   }, [
     props.value,
     render,
+    setIsLoading,
     setRender,
     setFile,
-    setIsUploading,
+    setLoading,
     setUploadError,
     setLink,
   ]);
+
+  useEffect(() => {
+    if (lastImage.current && !props.value && render) {
+      setRender(null);
+      setFile(null);
+      setLoading(false);
+      setUploadError(false);
+
+      setLink("");
+    }
+    lastImage.current = props.value;
+  }, [render, setLink, props.value, setLoading, setIsLoading]);
 
   const successfulUpload = !!file && !isUploading && !uploadError;
 
   return (
     <>
       <div className={combineClasses(styles.imageUpload)}>
-        <label className={styles.large} ref={dropzone}>
+        <p>{props.title}</p>
+        <label className={styles.medium} ref={dropzone}>
           <input
             disabled={isUploading}
             type="file"
@@ -150,7 +173,7 @@ export default function ImageUpload(props) {
 }
 
 ImageUpload.defaultProps = {
-  size: "large",
+  size: "medium",
 };
 
 const allowedFilesTypes = {

@@ -13,6 +13,16 @@
       width: 200px;
       height: 200px;
     }
+
+    &.medium {
+      height: 150px;
+      width: 150px;
+    }
+
+    &.small {
+      height: 50px;
+      width: 50px;
+    }
   }
 
   svg {
@@ -71,8 +81,8 @@
 
     &.medium {
       border: 1px solid var(--text);
-      height: 100px;
-      width: 100px;
+      height: 150px;
+      width: 150px;
     }
 
     &.small {

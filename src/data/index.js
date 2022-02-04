@@ -3,4 +3,5 @@ export const newImage = {
   description: "",
   name: "",
   private: true,
+  progress: [{ link: null }],
 };

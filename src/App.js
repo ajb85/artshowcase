@@ -11,7 +11,8 @@ function App() {
     <div className="App" onClick={handleBodyClick}>
       <Routes>
         <Route path="/" exact element={<Gallery />} />
-        <Route path="/image/:id" element={<FullPageImage />} />
+        <Route path="/image/:id" exact element={<FullPageImage />} />
+        <Route path="/image/:id/:progressIndex" element={<FullPageImage />} />
         <Route
           path="/manager"
           element={token.validated ? <ImageManager /> : <Login />}

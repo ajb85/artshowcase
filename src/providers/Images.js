@@ -4,6 +4,7 @@ import React, {
   useMemo,
   useCallback,
   useContext,
+  useRef,
 } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -26,6 +27,7 @@ export default function Images(props) {
   const [isLoading, setIsLoading] = useState(true);
   const [onFinal, setOnFinal] = useState(false);
   const [error, setError] = useState(false);
+  const allowInitialFetch = useRef(true);
 
   const imagesLookup = useMemo(
     () => getLookupByID([...images, ...fetched]),
@@ -66,7 +68,8 @@ export default function Images(props) {
   const fetchSingleImageFromID = useCallback(
     async (id) => {
       try {
-        if (!isLoading) {
+        if ((!isLoading && !error) || allowInitialFetch.current) {
+          allowInitialFetch.current = false;
           setIsLoading(true);
 
           const results = await axios.get(`/images/${id}`);
@@ -82,7 +85,7 @@ export default function Images(props) {
         setError("Could not fetch your image :(");
       }
     },
-    [fetched, isLoading]
+    [fetched, isLoading, error]
   );
 
   const getImageByID = useCallback(
